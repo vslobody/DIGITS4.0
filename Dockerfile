@@ -50,8 +50,8 @@ RUN git clone https://github.com/NVIDIA/DIGITS.git $DIGITS_ROOT
 
 RUN sudo pip install -r $DIGITS_ROOT/requirements.txt
 WORKDIR /root/
-COPY mnist.tar.gz /root
-RUN tar -xvzf mnist.tar.gz
+#COPY mnist.tar.gz /root
+#RUN tar -xvzf mnist.tar.gz
 WORKDIR /root/digits
 ENTRYPOINT /root/digits/digits-devserver -d
 #RUN echo $PATH
