@@ -1,4 +1,4 @@
-FROM cuda:8.0-cudnn5-devel
+FROM nvidia/cuda:8.0-cudnn5-devel
 MAINTAINER volodimir@gmail.com
 
 #General Dependencies
