@@ -13,4 +13,7 @@ So I combined information from the following sources to create this Dockerfile.
 
 4. DIGITS: https://github.com/NVIDIA/DIGITS
 
-I have also added MNIST to the image.
+If you want to add MNIST database, you can run this command from container:
+/root/digits/tools/main.py mnist ~/mnist
+This will add train and test images into /root/mnist folder
+
