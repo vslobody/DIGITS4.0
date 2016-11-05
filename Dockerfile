@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel
+FROM cuda:8.0-cudnn5-devel
 MAINTAINER volodimir@gmail.com
 
 #General Dependencies
@@ -26,6 +26,7 @@ RUN mkdir build
 WORKDIR /root/caffe/build
 RUN cmake ..
 RUN make -j $(($(nproc) + 1))
+ENV PYTHONPATH=/root/caffe/python
 
 #TORCH INSTALLATION
 # example location - can be customized
@@ -47,13 +48,11 @@ RUN /root/torch/install/bin/luarocks install lightningmdb 0.9.18.1-1 LMDB_INCDIR
 # example location - can be customized
 ENV DIGITS_ROOT=/root/digits
 RUN git clone https://github.com/NVIDIA/DIGITS.git $DIGITS_ROOT
-
 RUN sudo pip install -r $DIGITS_ROOT/requirements.txt
-WORKDIR /root/
-COPY mnist.tar.gz /root
-RUN tar -xvzf mnist.tar.gz
+
+WORKDIR /root/digits/tools/
+COPY download_data .
 WORKDIR /root/digits
 ENTRYPOINT /root/digits/digits-devserver -d
 #RUN echo $PATH
 EXPOSE 5000
-
