@@ -4,16 +4,51 @@ MAINTAINER volodimir@gmail.com
 #General Dependencies
 RUN apt-get update 
 RUN apt-get upgrade -y
-RUN apt-get install -y sudo git cmake vim   wget unzip dh-autoreconf build-essential pkg-config 
-RUN apt-get install -y graphviz python-dev python-flask python-flaskext.wtf python-gevent python-h5py python-numpy python-pil python-pip python-protobuf python-scipy
-RUN apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler libboost-all-dev doxygen luarocks
-RUN apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
-RUN apt-get install -y libatlas-base-dev      
-RUN apt-get install -y  software-properties-common    libhdf5-dev 
+RUN apt-get install -y sudo \
+git \
+cmake \
+vim   \
+wget \
+unzip \
+dh-autoreconf \
+build-essential \
+pkg-config \
+graphviz \
+python-dev \
+python-flask \
+python-flaskext.wtf \
+python-gevent \
+python-h5py \
+python-numpy \
+python-pil \
+python-pip \
+python-protobuf \
+python-scipy
+libprotobuf-dev \
+libleveldb-dev \
+libsnappy-dev \
+libopencv-dev \
+libhdf5-serial-dev \
+protobuf-compiler \
+libboost-all-dev \
+doxygen \
+luarocks \
+libgflags-dev \
+libgoogle-glog-dev \
+liblmdb-dev\
+libatlas-base-dev \
+software-properties-common\    
+libhdf5-dev 
 
 RUN pip install --upgrade pip
 
-RUN sudo apt-get install -y    gfortran         python-all-dev   python-matplotlib  python-opencv     python-skimage python-sklearn
+RUN sudo apt-get install -y    \
+gfortran  \
+python-all-dev \
+python-matplotlib \
+python-opencv \
+python-skimage \
+python-sklearn
 
 
 #CAFFE INSTALLATION
@@ -52,6 +87,7 @@ RUN sudo pip install -r $DIGITS_ROOT/requirements.txt
 
 WORKDIR /root/digits/tools/
 COPY download_data .
+RUN ./main.py mnist ~mnist
 WORKDIR /root/digits
 ENTRYPOINT /root/digits/digits-devserver -d
 #RUN echo $PATH
