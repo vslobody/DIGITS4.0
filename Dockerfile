@@ -87,7 +87,7 @@ RUN sudo pip install -r $DIGITS_ROOT/requirements.txt
 
 WORKDIR /root/digits/tools/
 COPY download_data .
-RUN ./main.py mnist ~mnist
+RUN ./main.py mnist ~/mnist
 WORKDIR /root/digits
 ENTRYPOINT /root/digits/digits-devserver -d
 #RUN echo $PATH
