@@ -35,9 +35,9 @@ RUN apt-get install -y sudo \
   luarocks \
   libgflags-dev \
   libgoogle-glog-dev \
-  liblmdb-dev\
+  liblmdb-dev \
   libatlas-base-dev \
-  software-properties-common\    
+  software-properties-common \    
   libhdf5-dev 
 
 RUN pip install --upgrade pip
