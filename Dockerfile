@@ -23,7 +23,7 @@ RUN apt-get install -y sudo \
   python-pil \
   python-pip \
   python-protobuf \
-  python-scipy
+  python-scipy \
   libprotobuf-dev \
   libleveldb-dev \
   libsnappy-dev \
